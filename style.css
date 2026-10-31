@@ -67,3 +67,36 @@ footer {
   color: var(--sand);
   padding: 1rem;
 }
+header {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 110px;
+}
+
+.gardener {
+  position: absolute;
+  bottom: 0;
+  left: -160px;
+  width: 160px;
+  image-rendering: pixelated;
+  pointer-events: none;
+  scale: -1 1;
+  animation: walk 18s linear infinite, bob 0.9s ease-in-out infinite;
+}
+
+@keyframes walk {
+  0%   { left: 0; transform: scaleX(1); }
+  45%  { left: calc(100% - 100px); transform: scaleX(1); }
+  50%  { left: calc(100% - 100px); transform: scaleX(-1); }
+  95%  { left: 0; transform: scaleX(-1); }
+  100% { left: 0; transform: scaleX(1); }
+}
+
+@keyframes bob {
+  0%, 100% { translate: 0 0;     rotate: -3deg; }
+  50%      { translate: 0 -10px; rotate: 3deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gardener { animation: none; }
+}
